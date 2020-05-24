@@ -184,10 +184,10 @@ app.use("/api/bookmark",bookmarkRoute);
 
 if (process.env.NODE_ENV === 'production') {
   console.log("Listening on port",8080);	  // Set static folder
-  app.use(express.static(__dirname+'/../client/build'));
+  app.use(express.static(__dirname+'/../bookmark-client/build'));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..' , 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..' , 'bookmark-client', 'build', 'index.html'));
   });
 }
 
