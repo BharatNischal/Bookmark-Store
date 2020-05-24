@@ -1,0 +1,16 @@
+tbody{
+    max-height:60vh;
+    overflow-y:scroll;
+}
+
+.color-theme{
+  color: "#6c7ae0";
+}
+
+.background-theme{
+  background-color: "#6c7ae0";
+}
+
+.pointer{
+  cursor: pointer;
+}
