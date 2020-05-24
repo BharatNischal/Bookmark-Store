@@ -182,6 +182,16 @@ app.get('/api/user',(req,res)=>{
 
 app.use("/api/bookmark",bookmarkRoute);
 
-app.listen(8080,()=>{
-    console.log("server started at port 8080");
-})
+if (process.env.NODE_ENV === 'production') {
+  console.log("Listening on port",8080);	  // Set static folder
+  app.use(express.static(__dirname+'/../client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..' , 'client', 'build', 'index.html'));
+  });
+}
+
+const port = process.env.PORT || 8080;
+app.listen(port,()=>{
+  console.log("Listening on port ",port);
+});	});

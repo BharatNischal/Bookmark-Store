@@ -14,7 +14,7 @@ const Dashboard = (props)=>{
   useEffect(()=>{
 
       const fetchUser = async () => {
-         const response = await axios.get(`http://localhost:8080/api/user`);
+         const response = await axios.get(`/api/user`);
          if(response.data && response.data.user){
            setUser({login:true,username:response.data.user.username,name:response.data.user.name});
          }else{
@@ -22,7 +22,7 @@ const Dashboard = (props)=>{
          }
     }
     const fetchBookmarks = async() => {
-      const response = await axios.get(`http://localhost:8080/api/bookmark/`);
+      const response = await axios.get(`/api/bookmark/`);
       console.log("response is",response);
       if(response.data){
         console.log("response data called");
@@ -35,7 +35,7 @@ const Dashboard = (props)=>{
 
   const handleForm = (e)=>{
     e.preventDefault();
-    axios.post('http://localhost:8080/api/bookmark',{...formData})
+    axios.post('/api/bookmark',{...formData})
       .then(res=>{
           setBookmarks([...bookmarks,formData]);
           setForm(false);

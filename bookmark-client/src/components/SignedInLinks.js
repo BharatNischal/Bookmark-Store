@@ -10,7 +10,7 @@ const SignedInLinks = (props)=>{
   const {setBookmarks} = useContext(BookmarkContext);
 
   const handleLogout = (e)=>{
-    axios.get("http://localhost:8080/api/logout")
+    axios.get("/api/logout")
       .then(res=>{
         console.log(res);
         if(res.data && res.data.success){

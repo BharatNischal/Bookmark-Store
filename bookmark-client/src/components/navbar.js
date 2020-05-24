@@ -13,7 +13,7 @@ const Navbar = (props)=>{
   const [title,setTitle] = useState("");
 
   const refresh = ()=>{
-  axios.get(`http://localhost:8080/api/bookmark/`)
+  axios.get(`/api/bookmark/`)
       .then(res=>{
         console.log("res",res);
           setBookmarks(res.data);
@@ -26,7 +26,7 @@ const Navbar = (props)=>{
 
   const handleSubmit = (e)=>{
     e.preventDefault();
-    axios.post("http://localhost:8080/api/bookmark/search",{title})
+    axios.post("/api/bookmark/search",{title})
       .then(res=>{
         console.log("res",res);
           setBookmarks(res.data);

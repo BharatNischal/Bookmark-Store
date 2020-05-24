@@ -18,7 +18,7 @@ const SignIn = (props)=>{
         setPassword("");
         setUsername("");
         setName("");
-        axios.post('http://localhost:8080/api/register',{...userData})
+        axios.post('/api/register',{...userData})
           .then(res=>{
             console.log(res);
             if(res.data.success){

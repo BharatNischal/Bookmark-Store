@@ -8,7 +8,7 @@ const Bookmark = (props)=>{
   const {bookmarks,setBookmarks} = useContext(BookmarkContext);
 
 const del = ()=>{
-  axios.delete(`http://localhost:8080/api/bookmark/${props.data._id}`)
+  axios.delete(`/api/bookmark/${props.data._id}`)
     .then(res=>{
       if(res.data.success){
           setBookmarks(bookmarks.filter(bookmark=>{

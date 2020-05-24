@@ -22,7 +22,7 @@ const ResetPassword = (props)=>{
       setBtnclick(false);
       return;
     }
-    axios.post("http://localhost:8080/api/reset/"+props.match.params.token,{password})
+    axios.post("/api/reset/"+props.match.params.token,{password})
       .then(res=>{
           if(res.data.success){
             props.history.push("/");

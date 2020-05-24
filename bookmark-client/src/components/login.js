@@ -15,7 +15,7 @@ const {setUser} = useContext(UserContext);
     setErr("");
     const userData = {username,password};
     if(reset){
-      axios.post("http://localhost:8080/api/forget",{username})
+      axios.post("/api/forget",{username})
         .then(res=>{
           if(res.data.success){
             setErr("Check your mail");
@@ -35,7 +35,7 @@ const {setUser} = useContext(UserContext);
         console.log(userData);
         setPassword("");
         setUsername("");
-        axios.post('http://localhost:8080/api/login',{...userData})
+        axios.post('/api/login',{...userData})
           .then(res=>{
             if(res.data.success){
               console.log("sign up successfully",res.data.user);
