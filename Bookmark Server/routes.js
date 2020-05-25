@@ -69,7 +69,7 @@ router.put("/:bookmarkId", (req,res)=> {
 router.delete("/:bookmarkId", (req,res)=> {
   Bookmark.remove({_id:req.params.bookmarkId})
   .then(()=> {
-    User.find({username:req.user.username})
+    User.findById(req.user._id)
       .then(user=>{
         var ind = user.bookmarks.indexOf(req.params.bookmarkId);
         if(ind != -1){

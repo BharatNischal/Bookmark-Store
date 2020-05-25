@@ -47,6 +47,8 @@ const Dashboard = (props)=>{
       })
   }
 
+  const [modal,setModal] = useState({url:"",selection:"",title:""});
+
   let formdata = form?<form class="form mb-4" onSubmit={handleForm}>
                         <div class="row">
                           <div class="form-group col-6 col-md-3">
@@ -81,7 +83,7 @@ const Dashboard = (props)=>{
             </tr>
           </thead>
           <tbody>
-            <BookmarkList/>
+            <BookmarkList enableModal={setModal} />
           </tbody>
         </table>
       </div>
@@ -89,6 +91,26 @@ const Dashboard = (props)=>{
         <button className="btn btn-lg text-white rounded-pill" onClick={()=>{setForm(true)}} style={{backgroundColor:"#6c7ae0"}}>New Bookmark </button>
       </div>
       {formdata}
+      <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+          <div className="modal-content" style={{borderRadius:"15px"}}>
+            <div className="modal-header" style={{backgroundColor:"#6c7ae0"}}>
+              <h5 className="modal-title text-white" id="exampleModalLabel">{modal.title}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div classname="modal-body" style={{padding:"10px",position: "relative",height: "300px",overflowY: "scroll"}}>
+              {modal.selection}
+            </div>
+            <div className="modal-footer">
+              <a href={modal.url} target="_blank">Visit Site</a>
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
   </React.Fragment>:<div>
                       <img src="https://itinerantnotes.com/blog/images/empty.gif" className="img-fluid mx-auto d-block"/>
                       <h5 className="text-center text-primary">1. Select text and right click 2. Press add to Bookmark store 3. Save your bookmarks </h5>

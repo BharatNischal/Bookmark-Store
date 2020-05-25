@@ -90,3 +90,7 @@ table::-webkit-scrollbar-thumb
   height: auto;
   filter: brightness(220%);
 }
+
+.pointer{
+  cursor: pointer;
+}
