@@ -68,8 +68,16 @@ router.put("/:bookmarkId", (req,res)=> {
 
 router.delete("/:bookmarkId", (req,res)=> {
   Bookmark.remove({_id:req.params.bookmarkId})
-  .then(function () {
-    res.json({success:true});
+  .then(()=> {
+    User.find({username:req.user.username})
+      .then(user=>{
+        var ind = user.bookmarks.indexOf(req.params.bookmarkId);
+        if(ind != -1){
+          user.bookmarks.splice(ind,1);
+          user.save();
+        }
+        res.json({success:true});
+      })
   })
   .catch(function (err) {
     console.log(err);
