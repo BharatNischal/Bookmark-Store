@@ -7,6 +7,7 @@ import LogIn from './components/login';
 import Navbar from './components/navbar';
 import UserContextProvider from "./contexts/curUser";
 import BookmarkContextProvider from "./contexts/bookmark";
+import Footer from "./components/footer";
 import axios from 'axios';
 import './App.css';
 
@@ -17,6 +18,7 @@ function App() {
     <BrowserRouter>
       <UserContextProvider>
         <BookmarkContextProvider>
+          <div style={{minHeight:"100vh"}}>
           <Navbar />
           <Switch>
             <Route path="/" exact component={Dashboard}/>
@@ -24,6 +26,8 @@ function App() {
             <Route path="/login" exact component={LogIn} />
             <Route path="/reset/:token" exact component={ResetPassword}/>
           </Switch>
+          </div>
+          <Footer />
         </BookmarkContextProvider>
       </UserContextProvider>
     </BrowserRouter>
