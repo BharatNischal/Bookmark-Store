@@ -30,6 +30,7 @@ const Navbar = (props)=>{
       .then(res=>{
         console.log("res",res);
           setBookmarks(res.data);
+          props.clearSearch(true);
       })
       .catch(err=>{
         console.log(err.message);

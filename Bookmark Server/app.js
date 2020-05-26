@@ -14,8 +14,8 @@ const          express = require('express'),
                    app = express();
 
 // Setting Up Dotenv for .env files environment variable
-const dotenv = require('dotenv');
-dotenv.config();
+// const dotenv = require('dotenv');
+// dotenv.config();
 
  app.use(cors({
    origin:['*'],
@@ -182,14 +182,14 @@ app.get('/api/user',(req,res)=>{
 
 app.use("/api/bookmark",bookmarkRoute);
 
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
   console.log("Listening on port",8080);	  // Set static folder
   app.use(express.static(__dirname+'/../bookmark-client/build'));
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..' , 'bookmark-client', 'build', 'index.html'));
   });
-}
+// }
 
 const port = process.env.PORT || 8080;
 app.listen(port,()=>{

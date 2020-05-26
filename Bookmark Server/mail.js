@@ -23,7 +23,7 @@ const smtpTransport = nodemailer.createTransport({
           clientId: process.env.client,
           clientSecret: process.env.secret,
           refreshToken: process.env.refreshToken,
-          accessToken: accessToken      
+          accessToken: accessToken
      }
 });
 

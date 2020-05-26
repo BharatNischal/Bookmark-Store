@@ -13,15 +13,17 @@ import './App.css';
 
 function App() {
   axios.defaults.withCredentials = true;
-
+  const [search,setSearch] = useState(false);
   return (
     <BrowserRouter>
       <UserContextProvider>
         <BookmarkContextProvider>
           <div style={{minHeight:"100vh"}}>
-          <Navbar />
+          <Navbar clearSearch={setSearch}/>
           <Switch>
-            <Route path="/" exact component={Dashboard}/>
+            <Route exact path="/"
+              render={(props) => <Dashboard {...props} clearSearch={setSearch} search={search} />}
+            />
             <Route path="/signup" exact component={SignIn} />
             <Route path="/login" exact component={LogIn} />
             <Route path="/reset/:token" exact component={ResetPassword}/>

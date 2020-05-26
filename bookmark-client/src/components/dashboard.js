@@ -11,8 +11,16 @@ const Dashboard = (props)=>{
   const [form,setForm] = useState(false);
   const [formData,setFormData] = useState({title:"",url:"",selection:""});
 
-  useEffect(()=>{
+  const fetchBookmarks = async() => {
+    const response = await axios.get(`/api/bookmark/`);
+    console.log("response is",response);
+    if(response.data){
+      console.log("response data called");
+      setBookmarks(response.data);
+    }
+  }
 
+  useEffect(()=>{
       const fetchUser = async () => {
          const response = await axios.get(`/api/user`);
          if(response.data && response.data.user){
@@ -20,14 +28,6 @@ const Dashboard = (props)=>{
          }else{
            props.history.push('/login');
          }
-    }
-    const fetchBookmarks = async() => {
-      const response = await axios.get(`/api/bookmark/`);
-      console.log("response is",response);
-      if(response.data){
-        console.log("response data called");
-        setBookmarks(response.data);
-      }
     }
     fetchUser();
     fetchBookmarks();
@@ -66,11 +66,14 @@ const Dashboard = (props)=>{
                         </div>
                       </form>:null;
 
+  let clearSearchBtn = props.search?<p className="text-center text-danger pointer" onClick={()=>{fetchBookmarks();props.clearSearch(false)}}><i className="fa fa-close"></i> Clear Search</p>:null;
+
   return (
     <div className="container">
       <div className="text-center">
         <h1 style={{color:"#6c7ae0"}}>BookMark Store</h1>
       </div>
+      {clearSearchBtn}
       <br/>
       {(bookmarks && bookmarks.length>0)?<React.Fragment>
         <div>
