@@ -8,7 +8,7 @@ const Header = (props)=>{
             <p className="text-center text-white">Made With <i className="fa fa-heart text-danger"></i> and JS</p>
           </div>
           <div className="col-12 col-md-6">
-          <p className="text-center text-white"><a href="" target="_blank"><i className="fa fa-star"></i> the <i className="fa fa-github"></i> Repo</a></p>
+          <p className="text-center text-white"><a href="https://github.com/BharatNischal/Bookmark-Store" target="_blank"><i className="fa fa-star"></i> the <i className="fa fa-github"></i> Repo</a></p>
           </div>
         </div>
       </footer>
