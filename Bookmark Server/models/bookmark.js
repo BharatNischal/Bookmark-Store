@@ -1,19 +1,19 @@
-var mongoose    =   require("mongoose");
+const mongoose = require('mongoose');
 
-var bookmarkSchema  = new mongoose.Schema({
-  title:{
-    type:String,
+const bookmarkSchema = new mongoose.Schema({
+  title: {
+    type: String,
   },
-  url:{
-    type:String,
+  url: {
+    type: String,
   },
-  selection:{
-    type:String,
+  selection: {
+    type: String,
   },
-  created_date:{
-    type:Date,
-    default:Date.now
-  }
+  created_date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model("bookmark",bookmarkSchema);
+module.exports = mongoose.model('bookmark', bookmarkSchema);
