@@ -13,6 +13,7 @@ import './App.css';
 
 function App() {
   axios.defaults.withCredentials = true;
+  axios.defaults.baseURL = 'http://localhost:8080';
   const [search,setSearch] = useState(false);
   return (
     <BrowserRouter>

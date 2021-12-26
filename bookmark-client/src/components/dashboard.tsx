@@ -6,7 +6,7 @@ import { UserContext } from '../contexts/curUser';
 import { BookmarkContext } from '../contexts/bookmark';
 
 interface DashboardProps extends RouteComponentProps {
-  search: string;
+  search: boolean;
   clearSearch: (data: boolean) => void
 }
 

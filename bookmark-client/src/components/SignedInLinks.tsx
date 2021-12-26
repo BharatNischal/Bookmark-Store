@@ -2,6 +2,9 @@
 import React, { useContext } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import axios from 'axios';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import { alpha, Button, makeStyles } from '@material-ui/core';
+import Avatar from '@material-ui/core/Avatar';
 import { UserContext, UserInterface } from '../contexts/curUser';
 import { BookmarkContext } from '../contexts/bookmark';
 
@@ -9,9 +12,22 @@ interface NavLinksProps extends RouteComponentProps {
   user: UserInterface
 }
 
+const useStyles = makeStyles((theme) => ({
+  white: {
+    color: '#fff',
+  },
+  smallAvatar: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+    margin: '0 10px 0 5px',
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+  }
+}));
+
 const SignedInLinks: React.FC<NavLinksProps> = ({ history, user }) => {
   const { setUser } = useContext(UserContext);
   const { setBookmarks } = useContext(BookmarkContext);
+  const classes = useStyles();
 
   const handleLogout = () => {
     axios.get('/api/logout')
@@ -29,13 +45,14 @@ const SignedInLinks: React.FC<NavLinksProps> = ({ history, user }) => {
 
   return (
     <>
-      <li className="nav-item pl-1">
-        <a className="nav-link text-primary pointer">{`Welcome ${user.name}`}</a>
-      </li>
-      ,
-      <li className="nav-item pl-1">
-        <a className="nav-link text-primary pointer" role="button" tabIndex={0} onKeyDown={handleLogout} onClick={handleLogout}>Log Out</a>
-      </li>
+      <Avatar className={classes.smallAvatar}>{user.username[0]}</Avatar>
+      <Button 
+        onClick={handleLogout}
+        startIcon={<ExitToAppOutlinedIcon />}
+        className={classes.white}
+      >
+        Logout
+      </Button>
     </>
   );
 };
